@@ -1,0 +1,129 @@
+Kategori,Nama Barang,Kode,Satuan,Stok Awal,Pcs/Dus
+Produk Akhir,Wedges Plain 500gr,PA01,pcs,0,20
+Produk Akhir,Wedges Plain 1kg,PA02,pcs,0,10
+Produk Akhir,Wedges Plain 2kg,PA03,pcs,0,5
+Produk Akhir,Waffle Seasoned Fries 500gr,PA04,pcs,0,20
+Produk Akhir,Waffle Seasoned Fries 1kg,PA05,pcs,0,10
+Produk Akhir,Waffle Seasoned Fries 2kg,PA06,pcs,0,5
+Produk Akhir,Rendang Seasoned Wedges 500gr,PA07,pcs,11,20
+Produk Akhir,Rendang Seasoned Wedges 1kg,PA08,pcs,0,10
+Produk Akhir,Rendang Seasoned Wedges 2kg,PA09,pcs,0,5
+Produk Akhir,Mashed Potato 500gr,PA10,pcs,37,20
+Produk Akhir,Mashed Potato 1kg,PA11,pcs,9,10
+Produk Akhir,Mashed Potato 2kg,PA12,pcs,0,5
+Produk Akhir,Cheesy Potato Nuggets 500gr,PA13,pcs,0,20
+Produk Akhir,Cheesy Potato Nuggets 1kg,PA14,pcs,11,10
+Produk Akhir,Cheesy Potato Nuggets 2kg,PA15,pcs,0,5
+Produk Akhir,Mozzarella Potato Sticks 10pcs,PA16,pcs,0,0
+Produk Akhir,Mozzarella Potato Balls 10pcs,PA17,pcs,0,0
+Produk Akhir,Mixed Vegetables 4 Ways 1kg,PA18,pcs,4,10
+Produk Akhir,Mixed Vegetables 3 Ways 1kg,PA19,pcs,5,10
+Produk Akhir,Mixed Capcay 1kg,PA20,pcs,0,10
+Produk Akhir,Jagung Manis Pipil 1kg,PA21,pcs,12,10
+Produk Akhir,Jagung,PA22,kg,0,0
+Produk Akhir,Wortel,PA23,kg,0,0
+Produk Akhir,Buncis,PA24,kg,0,0
+Produk Akhir,Kacang Polong,PA25,kg,0,0
+Produk Akhir,Crinkle Cut 500gr,PA26,pcs,0,20
+Produk Akhir,Crinkle Cut 1kg,PA27,pcs,0,10
+Produk Akhir,Crinkle Cut 2kg,PA28,pcs,0,5
+Produk Akhir,Seasoned Wedges 500gr,PA29,pcs,0,20
+Produk Akhir,Seasoned Wedges 1kg ( Sablon ),PA30,pcs,30,10
+Produk Akhir,Seasoned Wedges 2kg,PA31,pcs,4,5
+Produk Akhir,Sweet Chopped Carrots,PA32,pcs,0,0
+Produk Akhir,Shoestring Battercoated 2kg,PA33,kg,0,5
+Produk Akhir,Baby Potato,PA34,pcs,0,0
+Produk Akhir,Edamame 1kg,PA35,pcs,0,10
+Produk Akhir,Seasoned Wedges 1kg ( Polos ),,pcs,36,10
+Produk Akhir,Mashed Potato 1kg ( Sablon ) GB,,pcs,0,10
+Bahan Baku,Kentang Atlantik,BB01,kg,0,0
+Bahan Baku,Kentang Granola,BB02,kg,0,0
+Bahan Baku,Kentang Medians,BB03,kg,0,0
+Bahan Baku,Jagung,BB04,kg,0,0
+Bahan Baku,Wortel,BB05,kg,0,0
+Bahan Baku,Buncis,BB06,kg,0,0
+Bahan Baku,Kacang Polong,BB07,kg,0,0
+Bahan Baku,Brokoli,BB08,kg,0,0
+Bahan Baku,Kembang Kol,BB09,kg,0,0
+Bahan Baku,Kentang Ventury,BB10,kg,0,0
+Bahan Kemas,Plastik uk 30x45,BK01,pcs,41600,0
+Bahan Kemas,Plastik uk 20x35,BK02,pcs,215,0
+Bahan Kemas,Plastik uk 15x25,BK03,pcs,0,0
+Bahan Kemas,Plastik uk 90x120 (trashbag),BK04,pcs,32,0
+Bahan Kemas,Plastik Cheesy Potato Nugget 1kg,BK05,pcs,45,0
+Bahan Kemas,Plastik Cheesy Potato Nugget 250gr,BK06,pcs,95,0
+Bahan Kemas,Plastik Cheesy Potato Nugget 500gr (sablon),BK07,pcs,65,0
+Bahan Kemas,Plastik Hashbrown 1kg,BK08,pcs,180,0
+Bahan Kemas,Plastik Hashbrown 250gr,BK09,pcs,200,0
+Bahan Kemas,Plastik Hashbrown 500gr,BK10,pcs,0,0
+Bahan Kemas,Plastik Jagung 500gr,BK11,pcs,0,0
+Bahan Kemas,Plastik Jagung 1kg,BK12,pcs,480,0
+Bahan Kemas,Plastik Mashed Potato 1kg,BK13,pcs,0,0
+Bahan Kemas,Plastik Mashed Potato 250gr,BK14,pcs,66,0
+Bahan Kemas,Plastik Mashed Potato 500gr (sablon),BK15,pcs,0,0
+Bahan Kemas,Plastik Mix Vegetables 1kg,BK16,pcs,45,0
+Bahan Kemas,Plastik Mix Vegetables 500gr,BK17,pcs,47,0
+Bahan Kemas,Plastik Polos 500gr,BK18,pcs,22,0
+Bahan Kemas,Plastik Polos 1kg,BK19,pcs,215,0
+Bahan Kemas,Plastik Polos 2kg,BK20,pcs,4160,0
+Bahan Kemas,Plastik Rendang Wedges 500gr (sablon),BK21,pcs,0,0
+Bahan Kemas,Plastik Rendang Wedges 1kg,BK22,pcs,0,0
+Bahan Kemas,Plastik Seasoned Fries 1kg,BK23,pcs,0,0
+Bahan Kemas,Plastik Seasoned Fries 250gr,BK24,pcs,0,0
+Bahan Kemas,Plastik Seasoned Fries 500gr,BK25,pcs,0,0
+Bahan Kemas,Plastik Seasoned Wedges 1kg,BK26,pcs,0,0
+Bahan Kemas,Plastik Seasoned Wedges 250gr,BK27,pcs,0,0
+Bahan Kemas,Plastik Seasoned Wedges 500gr,BK28,pcs,256,0
+Bahan Kemas,Plastik Shoestring 1kg,BK29,pcs,71,0
+Bahan Kemas,Plastik Shoestring 500gr,BK30,pcs,61,0
+Bahan Kemas,Plastik Straightcut 1kg,BK31,pcs,0,0
+Bahan Kemas,Plastik Straightcut 500gr,BK32,pcs,87,0
+Bahan Kemas,Plastik Tulisan Hitam 1kg,BK33,pcs,0,0
+Bahan Kemas,Plastik Waffle Fries 500gr (sablon),BK34,pcs,396,0
+Bahan Kemas,Plastik Waffle Fries 1kg,BK35,pcs,0,0
+Bahan Kemas,Plastik Wedges Plain 1kg,BK36,pcs,120,0
+Bahan Kemas,Plastik Wedges Plain 250gr,BK37,pcs,57,0
+Bahan Kemas,Plastik Wedges Plain 500gr,BK38,pcs,234,0
+Bahan Kemas,Plastik Wedges Plain 2kg,BK39,pcs,40,0
+Bahan Kemas,Stiker Potato Balls,BK40,pcs,0,0
+Bahan Kemas,Stiker Potato Sticks,BK41,pcs,0,0
+Bahan Kemas,Kardus Polos,BK42,pcs,108,0
+Bahan Kemas,Kardus Sablon,BK43,pcs,0,0
+Bahan Kemas,Lakban,BK44,Roll,3,0
+Bahan Kemas,plastik 60 x 100,BK45,pcs,0,0
+Bahan Kemas,Plastik Southmount 1kg,BK46,pcs,560,0
+Bahan Kemas,Plastik Southmount 2kg,BK47,pcs,411,0
+Bahan Kemas,plastik 40 x 60,BK48,pcs,0,0
+Bahan Kemas,Plastik Crinkle Cut 1kg,BK49,pcs,19,0
+Bahan Penolong,Masker,BP01,pcs,75,0
+Bahan Penolong,Sarung Tangan Plastik,BP02,pcs,137,0
+Bahan Penolong,Sarung Tangan Latex,BP03,pcs,0,0
+Bahan Penolong,Nurse Cap,BP04,pcs,17,0
+Bahan Penolong,Spidol,BP05,pcs,12,0
+Bahan Penolong,Sabun Cuci Piring,BP06,ml,570,0
+Bahan Penolong,Sabun Lantai,BP07,pcs,0,0
+Bahan Tambahan Pangan,Minyak Sawit,BTP01,liter,0,0
+Bahan Tambahan Pangan,Minyak Canola,BTP02,liter,5,0
+Bahan Tambahan Pangan,Dextrose Monohydrate,BTP03,gr,5300,0
+Bahan Tambahan Pangan,Malto Dextrin,BTP04,gr,25000,0
+Bahan Tambahan Pangan,Citric Acid,BTP05,gr,25275,0
+Bahan Tambahan Pangan,Garam,BTP06,gr,14790,0
+Bahan Tambahan Pangan,Knorr,BTP07,gr,9730,0
+Bahan Tambahan Pangan,Tepung Beras,BTP08,gr,65000,0
+Bahan Tambahan Pangan,Tepung Terigu,BTP09,gr,0,0
+Bahan Tambahan Pangan,Tepung Jagung,BTP10,gr,3540,0
+Bahan Tambahan Pangan,Tepung Kentang,BTP11,gr,2610,0
+Bahan Tambahan Pangan,Bawang Putih Bubuk / Garlic Powder,BTP12,gr,34555,0
+Bahan Tambahan Pangan,Roasted Garlic,BTP13,gr,1000,0
+Bahan Tambahan Pangan,Lada Putih,BTP14,gr,2805,0
+Bahan Tambahan Pangan,Bumbu Rendang Indofood,BTP15,pcs,27,0
+Bahan Tambahan Pangan,Keju Mozzarella,BTP16,gr,0,0
+Bahan Tambahan Pangan,Keju Cheddar,BTP17,gr,6500,0
+Bahan Tambahan Pangan,Polenta,BTP18,gr,0,0
+Bahan Tambahan Pangan,Baking Powder,BTP19,gr,6380,0
+Bahan Tambahan Pangan,Ragi,BTP20,gr,0,0
+Bahan Tambahan Pangan,Chili Powder,BTP21,gr,0,0
+Bahan Tambahan Pangan,Paprika Bubuk,BTP22,gr,15430,0
+Bahan Tambahan Pangan,Pewarna Merah,BTP23,ml,0,0
+Bahan Tambahan Pangan,Maizena,BTP24,gr,65700,0
+Bahan Tambahan Pangan,Tapioka,BTP25,gr,1000,0

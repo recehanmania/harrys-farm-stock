@@ -1,0 +1,1 @@
+V107: Jenis plastik di Keluar Pabrik sekarang mengambil semua master plastik dari stok. Bisa pilih plastik manual spesifik, stok plastik ditampilkan dengan warna, dan laporan mencatat nama plastik yang benar.

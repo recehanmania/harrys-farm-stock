@@ -1,0 +1,25 @@
+V59 FINAL SMOKE TEST
+
+Setelah deploy dan alias, buka:
+https://harrys-farm-stock.vercel.app/?v=59
+
+Tanda benar:
+V59 FIX ALL FINAL BOSS AKTIF
+
+Tes 10 menit:
+1. Login.
+2. Home muncul Final Audit.
+3. Mode Admin PIN default 1234.
+4. Menu Stok: ada Print Barcode, kode/barcode bisa diedit.
+5. Menu Absen: centang karyawan, simpan absen, coba simpan lagi harus keblok dobel.
+6. Menu Absen: tombol Edit bisa ubah status/jam.
+7. Menu Produksi: Master Formula Produk ada.
+8. Menu Produksi: Mode Bahan Pakai Formula ada.
+9. Menu Laporan: tombol Edit transaksi ada.
+10. Dashboard: Backup Bulanan dan Closing Hari Ini ada.
+
+Kalau ada fitur tidak muncul:
+- buka ?v=59
+- Ctrl+F5 / incognito
+- pastikan folder yang dideploy: harrys_farm_stock_app_v59_fix_all_final_boss
+- jangan pakai canvas/localStorage offline.

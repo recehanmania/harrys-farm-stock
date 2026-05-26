@@ -1,0 +1,1 @@
+FINAL V131 - Audit fix dari V130. Sampul dashboard tetap dihapus, fitur Barang Dipakai Hari Ini tetap aktif, cache-busting dinaikkan ke v=131, file .env.local dan .vercel dibersihkan dari ZIP agar deploy/share lebih aman.

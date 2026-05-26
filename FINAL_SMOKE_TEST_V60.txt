@@ -1,0 +1,25 @@
+V60 FINAL SMOKE TEST
+
+Buka:
+https://harrys-farm-stock.vercel.app/?v=60
+
+Tanda benar:
+V60 FIXED FINAL AKTIF
+
+Tes cepat:
+1. Login berhasil.
+2. Home muncul Final Audit.
+3. Mode Admin PIN default 1234.
+4. Stok ada Print Barcode dan kode/barcode.
+5. Absen bisa simpan, absen dobel harus keblok.
+6. Absen ada Edit.
+7. Produksi ada Master Formula Produk dan Mode Bahan Pakai Formula.
+8. Keluar Pabrik auto potong produk/dus/plastik.
+9. Laporan ada Edit transaksi.
+10. Laporan Gaji sederhana muncul di Absen.
+11. Backup Bulanan dan Closing Hari Ini ada.
+12. Blok stok minus aktif.
+
+WAJIB:
+- Jangan deploy canvas/localStorage.
+- Pakai folder harrys_farm_stock_app_v60_fixed_final.
