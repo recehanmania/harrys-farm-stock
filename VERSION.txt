@@ -1,2 +1,2 @@
-V143 - LINK TEPAT VERCEL
-https://harrys-farm-stock.vercel.app/
+V144 Fix Web Simpan Produksi
+Link: https://harrys-farm-stock.vercel.app/

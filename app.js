@@ -1,4 +1,4 @@
-// Harrys Farm V140 - Hilangkan Tulisan Card + Dashboard Menu Simple + Laporan Simple Staff + GSheet Realtime
+// Harrys Farm V144 - Fix Web Simpan Produksi + cache bust
 
 (function(){
 const app = document.getElementById("app");
@@ -1693,6 +1693,99 @@ async function addProductionTx(productData, bahanList){
   setTimeout(()=>{state.flash=""; render();}, 4500);
   return true;
 }
+
+async function submitProductionFormWebSafe(ev, formOverride){
+  if(ev && ev.preventDefault) ev.preventDefault();
+  if(ev && ev.stopPropagation) ev.stopPropagation();
+  const pf = formOverride || document.getElementById("productionForm") || (ev && ev.currentTarget) || null;
+  if(!pf) return alert("Form produksi tidak ditemukan. Refresh halaman lalu coba lagi.");
+  if(pf.dataset.savingProduction === "1") return;
+  pf.dataset.savingProduction = "1";
+  const submitBtn = pf.querySelector('.produksi-submit');
+  if(submitBtn){
+    submitBtn.disabled = true;
+    submitBtn.dataset.oldText = submitBtn.dataset.oldText || submitBtn.textContent || 'Simpan Produksi Hari Ini';
+    submitBtn.textContent = 'Menyimpan produksi...';
+  }
+  const resetSubmitBtn = ()=>{
+    pf.dataset.savingProduction = "";
+    if(submitBtn){
+      submitBtn.disabled = false;
+      submitBtn.textContent = submitBtn.dataset.oldText || 'Simpan Produksi Hari Ini';
+    }
+  };
+
+  // V144 web fix: baca FormData manual supaya tombol tetap jalan di browser Chrome/Android,
+  // walaupun native submit/validasi HTML tertahan oleh cache atau field lama.
+  const d = Object.fromEntries(new FormData(pf).entries());
+  const product = itemById(d.product_id);
+  const qty = Number(String(d.qty || "0").replace(",", "."));
+  if(!accessToken()) { resetSubmitBtn(); renderLogin(); return alert("Sesi login web habis. Login ulang dulu, lalu simpan produksi lagi."); }
+  if(!d.date){ resetSubmitBtn(); return alert("Tanggal produksi wajib diisi."); }
+  if(!product){ resetSubmitBtn(); return alert("Pilih produk jadi dulu."); }
+  if(!qty || qty <= 0 || Number.isNaN(qty)){ resetSubmitBtn(); return alert("Isi hasil produksi/masuk stok lebih dari 0."); }
+
+  let bahanList = [];
+  let bahanNames = [];
+
+  if(d.recipe_mode === "formula"){
+    const recipeRows = recipesForProduct(product.id);
+    if(!recipeRows.length){ resetSubmitBtn(); return alert("Resep/BOM produk ini belum ada. Tambahkan dulu di Resep Produksi / BOM atau pakai mode manual."); }
+    bahanList = recipeBahanPayloads(product, qty, d.date, d.note, d.petugas);
+    bahanNames = bahanList.map(b => {
+      const bahan = itemById(b.item_id) || {};
+      return `${bahan.name || "Bahan"}: ${fmt(b.keluar)} ${bahan.unit || ""}`;
+    });
+  }else{
+    for(let n=1; n<=12; n++){
+      const bid = d[`bahan_${n}`];
+      const bqty = Number(String(d[`bahan_qty_${n}`] || "0").replace(",", "."));
+      if(bid && bqty > 0){
+        const bahan = itemById(bid);
+        if(!bahan) continue;
+        const row = stockRowByItemId(bid);
+        const current = row ? Number(row.stock || 0) : Number(bahan.starting_stock || 0);
+        if(bqty > current){
+          resetSubmitBtn();
+          return alert(`Stok ${bahan.name} tidak cukup. Sisa ${fmt(current)} ${bahan.unit || ""}, mau dipakai ${fmt(bqty)}. Produksi diblok supaya stok tidak minus.`);
+        }
+        bahanNames.push(`${bahan.name}: ${fmt(bqty)} ${bahan.unit || ""}`);
+        bahanList.push({
+          item_id:Number(bid),
+          date:d.date,
+          jam_transaksi:d.jam_transaksi || nowTime(),
+          keluar:bqty,
+          masuk:0,
+          jenis_transaksi:"produksi_bahan",
+          note:`Bahan produksi untuk ${product.name} | ${bahan.name}: ${fmt(bqty)} ${bahan.unit || ""} | ${d.note || ""}`.trim(),
+          petugas:d.petugas||userEmail()||state.roleMode||"staff"
+        });
+      }else if(bid && bqty <= 0){
+        resetSubmitBtn();
+        return alert(`Jumlah bahan baris ${n} harus lebih dari 0 atau kosongkan barangnya.`);
+      }
+    }
+  }
+
+  const noteDetail = bahanNames.length ? `Bahan dipakai: ${bahanNames.join(" | ")}` : "Tanpa rincian bahan";
+  try{
+    const saved = await addProductionTx({
+      item_id:Number(d.product_id),
+      date:d.date,
+      jam_transaksi:d.jam_transaksi || nowTime(),
+      keluar:0,
+      masuk:qty,
+      jenis_transaksi:"produksi_hasil",
+      note:[d.note || "Hasil produksi", noteDetail].filter(Boolean).join(" | "),
+      petugas:d.petugas||userEmail()||state.roleMode||"staff"
+    }, bahanList);
+    if(saved === false) resetSubmitBtn();
+  }catch(err){
+    resetSubmitBtn();
+    alert("Gagal simpan produksi di web: "+(err && err.message ? err.message : err));
+    if(String(err && err.message || err).toLowerCase().includes("login")) renderLogin();
+  }
+}
 function printReport(){
   window.print();
 }
@@ -2332,7 +2425,7 @@ function dailyReportDataForGSheet(reason="manual"){
     stok_kurang:stok.filter(x=>x.status==="DI BAWAH MINIMUM").length,
     stok_habis:stok.filter(x=>x.status==="HABIS").length
   };
-  return {app:"Harry's Farm Stock", version:"V140 Simple Staff Flow", type:"realtime_keluar_masuk_pemakaian", reason, date, jenis_filter:jenisFilter, exported_at:new Date().toISOString(), exported_by:userEmail() || state.roleMode || "admin", summary, transaksi, keluar_masuk, barang_dipakai, pemakaian_produk, kritis, stok};
+  return {app:"Harry's Farm Stock", version:"V144 Fix Web Simpan Produksi", type:"realtime_keluar_masuk_pemakaian", reason, date, jenis_filter:jenisFilter, exported_at:new Date().toISOString(), exported_by:userEmail() || state.roleMode || "admin", summary, transaksi, keluar_masuk, barang_dipakai, pemakaian_produk, kritis, stok};
 }
 
 function toggleGSheetAutoSync(){
@@ -5027,7 +5120,7 @@ function produksiPage(){
           </div>
         </details>
 
-        <button class="btn dark full produksi-submit produksi-submit-v135" type="submit">Simpan Produksi Hari Ini — DONE</button>
+        <button class="btn dark full produksi-submit produksi-submit-v135" type="submit">Simpan Produksi Hari Ini</button>
       </form>
     </section>
 
@@ -6059,83 +6152,25 @@ function bind(){
       ingredient_name:ingredient ? ingredient.name : "",
       qty_per_unit:qtyPerUnit,
       unit:ingredient ? ingredient.unit : "",
-      note:"Resep/BOM produksi V142"
+      note:"Resep/BOM produksi V144"
     });
   };
   document.querySelectorAll(".delRecipe").forEach(b=>b.onclick=()=>deleteRecipe(b.dataset.id));
 
-  const pf=document.getElementById("productionForm"); if(pf) pf.onsubmit=async e=>{
-    e.preventDefault();
-    const submitBtn = pf.querySelector('.produksi-submit');
-    if(submitBtn){ submitBtn.disabled = true; submitBtn.dataset.oldText = submitBtn.textContent || ''; submitBtn.textContent = 'Menyimpan produksi...'; }
-    const resetSubmitBtn = ()=>{ if(submitBtn){ submitBtn.disabled = false; submitBtn.textContent = submitBtn.dataset.oldText || 'Simpan Produksi Hari Ini'; } };
-    const d = Object.fromEntries(new FormData(pf).entries());
-    const product = itemById(d.product_id);
-    const qty = Number(String(d.qty || "0").replace(",", "."));
-    if(!d.date){ resetSubmitBtn(); return alert("Tanggal produksi wajib diisi."); }
-    if(!product){ resetSubmitBtn(); return alert("Pilih produk jadi dulu."); }
-    if(!qty || qty <= 0 || Number.isNaN(qty)){ resetSubmitBtn(); return alert("Isi hasil produksi/masuk stok lebih dari 0."); }
-
-    let bahanList = [];
-    let bahanNames = [];
-
-    if(d.recipe_mode === "formula"){
-      const recipeRows = recipesForProduct(product.id);
-      if(!recipeRows.length){ resetSubmitBtn(); return alert("Resep/BOM produk ini belum ada. Tambahkan dulu di Resep Produksi / BOM atau pakai mode manual."); }
-      bahanList = recipeBahanPayloads(product, qty, d.date, d.note, d.petugas);
-      bahanNames = bahanList.map(b => {
-        const bahan = itemById(b.item_id) || {};
-        return `${bahan.name || "Bahan"}: ${fmt(b.keluar)} ${bahan.unit || ""}`;
-      });
-    }else{
-      for(let n=1; n<=12; n++){
-        const bid = d[`bahan_${n}`];
-        const bqty = Number(String(d[`bahan_qty_${n}`] || "0").replace(",", "."));
-        if(bid && bqty > 0){
-          const bahan = itemById(bid);
-          if(!bahan) continue;
-
-          const row = stockRowByItemId(bid);
-          const current = row ? Number(row.stock || 0) : Number(bahan.starting_stock || 0);
-          if(bqty > current){
-            resetSubmitBtn();
-            alert(`Stok ${bahan.name} tidak cukup. Sisa ${fmt(current)} ${bahan.unit || ""}, mau dipakai ${fmt(bqty)}. Produksi diblok supaya stok tidak minus.`); return;
-          }
-
-          bahanNames.push(`${bahan.name}: ${fmt(bqty)} ${bahan.unit || ""}`);
-          bahanList.push({
-            item_id:Number(bid),
-            date:d.date,
-            jam_transaksi:d.jam_transaksi || nowTime(),
-            keluar:bqty,
-            masuk:0,
-            jenis_transaksi:"produksi_bahan",
-            note:`Bahan produksi untuk ${product.name} | ${bahan.name}: ${fmt(bqty)} ${bahan.unit || ""} | ${d.note || ""}`.trim(),
-            petugas:d.petugas||null
-          });
-        }
-      }
+  const pf=document.getElementById("productionForm");
+  if(pf){
+    pf.setAttribute("novalidate", "novalidate");
+    pf.onsubmit = (e)=>submitProductionFormWebSafe(e, pf);
+    const pbtn = pf.querySelector(".produksi-submit");
+    if(pbtn){
+      pbtn.onclick = (e)=>{
+        e.preventDefault();
+        e.stopPropagation();
+        // V144: fallback khusus web. Beberapa browser menahan submit ketika halaman masih pakai cache lama.
+        submitProductionFormWebSafe(e, pf);
+      };
     }
-
-    const noteDetail = bahanNames.length ? `Bahan dipakai: ${bahanNames.join(" | ")}` : "Tanpa rincian bahan";
-    try{
-      const saved = await addProductionTx({
-        item_id:Number(d.product_id),
-        date:d.date,
-        jam_transaksi:d.jam_transaksi || nowTime(),
-        keluar:0,
-        masuk:qty,
-        jenis_transaksi:"produksi_hasil",
-        note:[d.note || "Hasil produksi", noteDetail].filter(Boolean).join(" | "),
-        petugas:d.petugas||null
-      }, bahanList);
-      if(saved === false) resetSubmitBtn();
-    }catch(err){
-      resetSubmitBtn();
-      alert("Gagal simpan produksi: "+err.message);
-      if(String(err.message).includes("login")) renderLogin();
-    }
-  };
+  }
 
   const fof=document.getElementById("factoryOutForm"); if(fof) fof.onsubmit=async e=>{
     e.preventDefault();

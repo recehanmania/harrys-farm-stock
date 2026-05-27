@@ -1,7 +1,7 @@
 {
   "name": "Harry's Farm Stock",
   "short_name": "HF Stock",
-  "description": "Aplikasi stock opname Harry's Farm - dashboard dan menu simple staff",
+  "description": "Aplikasi stock opname Harry's Farm - dashboard dan menu simple staff - V144 fix web simpan produksi",
   "start_url": "https://harrys-farm-stock.vercel.app/",
   "scope": "https://harrys-farm-stock.vercel.app/",
   "display": "standalone",
