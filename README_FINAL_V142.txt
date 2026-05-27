@@ -15,4 +15,4 @@ git commit -m "Update V142 link utama Vercel"
 git push
 
 Buka setelah deploy:
-https://harrys-farm-stock.vercel.app/?v=142
+https://harrys-farm-stock.vercel.app/

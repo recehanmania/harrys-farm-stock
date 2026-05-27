@@ -2,7 +2,7 @@
   "name": "Harry's Farm Stock",
   "short_name": "HF Stock",
   "description": "Aplikasi stock opname Harry's Farm - dashboard dan menu simple staff",
-  "start_url": "https://harrys-farm-stock.vercel.app/?v=142",
+  "start_url": "https://harrys-farm-stock.vercel.app/",
   "scope": "https://harrys-farm-stock.vercel.app/",
   "display": "standalone",
   "background_color": "#ffffff",
