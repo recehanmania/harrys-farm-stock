@@ -6059,7 +6059,7 @@ function bind(){
       ingredient_name:ingredient ? ingredient.name : "",
       qty_per_unit:qtyPerUnit,
       unit:ingredient ? ingredient.unit : "",
-      note:"Resep/BOM produksi V141"
+      note:"Resep/BOM produksi V142"
     });
   };
   document.querySelectorAll(".delRecipe").forEach(b=>b.onclick=()=>deleteRecipe(b.dataset.id));

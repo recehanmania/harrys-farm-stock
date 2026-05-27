@@ -1,4 +1,4 @@
-HARRYS FARM STOCK OPNAME - V141 FIX TOMBOL SIMPAN PRODUKSI
+HARRYS FARM STOCK OPNAME - V142 FIX TOMBOL SIMPAN PRODUKSI
 
 Perbaikan dari V140:
 - Tombol Simpan Produksi Hari Ini sekarang bisa diklik dan tersubmit normal.

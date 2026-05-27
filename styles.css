@@ -10871,7 +10871,7 @@ body{
 }
 
 
-/* V141 - Fix tombol Simpan Produksi: jangan ketutup layer/card dan tetap clickable */
+/* V142 - Fix tombol Simpan Produksi: jangan ketutup layer/card dan tetap clickable */
 .clean-dashboard-v137 .produksi-form-v135{
   position:relative!important;
   z-index:5!important;

@@ -1,1 +1,2 @@
-V141 FIX TOMBOL SIMPAN PRODUKSI - SIMPLE STAFF FLOW
+V142_LINK_UTAMA_VERCEL
+https://harrys-farm-stock.vercel.app/

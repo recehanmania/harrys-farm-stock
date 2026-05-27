@@ -27,9 +27,9 @@ FIX V4:
 
 
 UPDATE V10 LINK:
-- Link aplikasi diarahkan ke: https://harrys-farm-stock.netlify.app/
+- Link aplikasi diarahkan ke: https://harrys-farm-stock.vercel.app/
 - Kalau bikin APK di PWABuilder, masukkan link ini:
-  https://harrys-farm-stock.netlify.app/
+  https://harrys-farm-stock.vercel.app/
 - APK lama yang dibuat dari link lama harus dibuat ulang/rebuild.
 
 
